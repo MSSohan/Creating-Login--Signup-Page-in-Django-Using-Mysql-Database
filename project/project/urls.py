@@ -20,6 +20,6 @@ from login.views import loginaction
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', loginaction),
     path('signup/', signaction),
+    path('login/', loginaction),
 ]
