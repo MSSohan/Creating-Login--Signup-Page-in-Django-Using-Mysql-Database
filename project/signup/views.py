@@ -1,5 +1,7 @@
 from django.shortcuts import render
+import mysql.connector as sql
+
 
 # Create your views here.
-def signaction():
+def signaction(request):
     return None
