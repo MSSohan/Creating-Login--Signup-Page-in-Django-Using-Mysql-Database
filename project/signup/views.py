@@ -9,6 +9,7 @@ pwd = ''
 
 # Create your views here.
 def signaction(request):
+    
     global fn, ln, s, em, pwd
     if request.method == 'POST':
         m = sql.connect(host = 'localhost', user = 'root', passwd = 'sohan123456', database = 'project')
@@ -26,7 +27,7 @@ def signaction(request):
             if key == 'password':
                 pwd = value
 
-        c = "insert into users Values('{}','{}','{}','{}''{}')".format(fn, ln, s, em, pwd)
+        c = "insert into users Value('{}','{}','{}','{}','{}')".format(fn, ln, s, em, pwd)
         cursor.execute(c)
         m.commit() 
 
