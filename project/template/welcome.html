@@ -1,17 +1,31 @@
 <html>
-    <head>
-        <title>Welcome Page</title>
-        <style>
-            body{
-                background-color: rgb(255, 255, 255);
-                color: rgb(0, 17, 255);
-                font-size: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <center><h2>Welcome :-) </h2></center>
-        <center><h2>You are successfully logged-in. </h2></center>
-    </body>
-
+<head>
+    <title>Welcome Page</title>
+    <style>
+        body{
+            background-color: rgb(255, 255, 255);
+            color: rgb(0, 17, 255);
+            font-size: 30px;
+        }
+        .logout-button {
+            margin-top: 20px;
+        }
+        .logout-button button {
+            background-color: red;
+            color: rgb(0, 0, 0);
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h2>Welcome :-)</h2>
+        <h2>You are successfully logged in.</h2>
+    </center>
+    <center>
+        <form method="post" action="{% url 'logout' %}" class="logout-button">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+    </center>
+</body>
 </html>
