@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.views.generic.base import RedirectView
+from django.contrib.auth import views as auth_views
 from signup.views import signaction
 from login.views import loginaction
 
@@ -23,4 +24,5 @@ urlpatterns = [
     path('', RedirectView.as_view(url='login/', permanent=False), name='default'),
     path('signup/', signaction),
     path('login/', loginaction),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 ]
