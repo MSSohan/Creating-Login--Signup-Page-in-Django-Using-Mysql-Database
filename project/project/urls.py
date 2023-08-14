@@ -17,10 +17,13 @@ from django.contrib import admin
 from django.urls import path
 from django.views.generic.base import RedirectView
 from django.contrib.auth import views as auth_views
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from signup.views import signaction
 from login.views import loginaction
 
 urlpatterns = [
+    path('token/', TokenObtainPairView.as_view(url = '/welcome/'), name='token_obtain_pair'),
+    path('token/refresh/', TokenRefreshView.as_view(url = '/welcome/'), name='token_refresh'),
     path('', RedirectView.as_view(url='login/', permanent=False), name='default'),
     path('signup/', signaction),
     path('login/', loginaction),
