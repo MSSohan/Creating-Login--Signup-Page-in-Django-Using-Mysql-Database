@@ -9,10 +9,10 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+# import django
+# django.setup()
 from pathlib import Path
 from datetime import timedelta
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -33,9 +33,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'rest_framework',
-    'rest_framework.authtoken',  # For token-based authentication
-    'rest_framework_simplejwt',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,8 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'signup',
-    'login',
-    'success'
+    'login'
 ]
 
 # Set the token expiration time to 1 month
@@ -71,14 +67,6 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
-
-# Include the JWT views in your URLs (usually in your app's urls.py)
-urlpatterns = [
-    # ...
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    # ...
-]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
